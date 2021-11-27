@@ -26,3 +26,8 @@ def print_array(array):
         
         
 print_array(data['Nombre municipio'].unique())
+
+# Número de personas que se encuentran en atención en casa
+estado = data.Estado.value_counts()
+print(f"El numero de personas en casa es: {estado.Leve + estado.Moderado}")
+
