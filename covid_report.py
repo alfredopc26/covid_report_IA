@@ -39,3 +39,10 @@ filtered = data.query(" Recuperado=='Recuperado' ")
 fil = filtered.Recuperado.value_counts()
 
 print(f"El numero de personas Recuperadas es: {fil.Recuperado}")
+
+
+# Número de personas que ha fallecido
+filtered = data.query(" Recuperado=='Fallecido' ")
+fil = filtered.Recuperado.value_counts()
+
+print(f"El numero de personas Recuperadas es: {fil.Fallecido}")
