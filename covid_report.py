@@ -28,6 +28,14 @@ def print_array(array):
 print_array(data['Nombre municipio'].unique())
 
 # Número de personas que se encuentran en atención en casa
-estado = data.Estado.value_counts()
-print(f"El numero de personas en casa es: {estado.Leve + estado.Moderado}")
+filtered = data.query("(Estado=='Leve' or Estado == 'Moderado') and Recuperado=='Activo'")
+fil = filtered.Estado.value_counts()
 
+print(f"El numero de personas en casa es: {fil.Leve + fil.Moderado}")
+
+
+# Número de personas que se encuentran recuperados
+filtered = data.query(" Recuperado=='Recuperado' ")
+fil = filtered.Recuperado.value_counts()
+
+print(f"El numero de personas Recuperadas es: {fil.Recuperado}")
