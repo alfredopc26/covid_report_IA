@@ -28,10 +28,11 @@ def print_array(array):
 print_array(data['Nombre municipio'].unique())
 
 # Número de personas que se encuentran en atención en casa
-filtered = data.query("(Estado=='Leve' or Estado == 'Moderado') and Recuperado=='Activo'")
-fil = filtered.Estado.value_counts()
-
-print(f"El numero de personas en casa es: {fil.Leve + fil.Moderado}")
+data.groupby('Ubicación del caso').size()
+data['Ubicación del caso'].replace('CASA','Casa',inplace=True)
+data['Ubicación del caso'].replace('casa','Casa',inplace=True)
+Ub_caso = data[(data['Ubicación del caso'] == 'Casa')].groupby('Ubicación del caso').size()
+print(f"El numero de personas en casa es: {Ub_caso.Casa}")
 
 
 # Número de personas que se encuentran recuperados
@@ -46,3 +47,12 @@ filtered = data.query(" Recuperado=='Fallecido' ")
 fil = filtered.Recuperado.value_counts()
 
 print(f"El numero de personas Recuperadas es: {fil.Fallecido}")
+
+# Ordenar de Mayor a menor por tipo de caso 
+# (Importado, en estudio, Relacionado)
+Tipo_contagio = data[(data['Tipo de contagio'] == 'Importado') | 
+(data['Tipo de contagio'] == 'En estudio') | 
+(data['Tipo de contagio'] == 'Relacionado')]
+Tipo_contagio.groupby('Tipo de contagio').size().sort_values(ascending=True)
+
+
