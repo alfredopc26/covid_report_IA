@@ -127,4 +127,8 @@ pais_size.sort_values(ascending = False)
 fecha_size = data.groupby('Fecha de diagnóstico').size()
 fecha_size.sort_values(ascending = False)
 
-# 
+# 22. Diga cual es la tasa de mortalidad y recuperación que tiene toda Colombia
+filtered = data.query(" Recuperado=='Fallecido' ")
+fallecido_ = filtered.Recuperado.value_counts()
+
+print(f"La tasa de mortalidad es: {fallecido_/num_casos}")
