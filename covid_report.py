@@ -81,3 +81,7 @@ r_dpto.sort_values(ascending = False).head(10)
 #14. Liste de mayor a menor los 10 municipios con mas casos de contagiados
 Mun_size = data.groupby('Nombre municipio').size()
 Mun_size.sort_values(ascending = False).head(10)
+
+# 15. Liste de mayor a menor los 10 municipios con mas casos de fallecidos
+f_mun = fallecido.groupby('Nombre municipio').size()
+f_mun.sort_values(ascending = False).head(10)
