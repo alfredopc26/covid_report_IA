@@ -57,3 +57,6 @@ Tipo_contagio.groupby('Tipo de contagio').size().sort_values(ascending=True)
 
 # 8. Número de departamentos afectados
 data.groupby('Nombre departamento').size().count()
+
+# 9. Liste los departamentos afectados(sin repetirlos)
+print_array(data['Nombre departamento'].unique())
