@@ -121,3 +121,10 @@ print(fil['Edad'].mean())
 
 pais_size = data.groupby('Nombre del país').size()
 pais_size.sort_values(ascending = False)
+
+# 21. Liste de mayor a menor las fechas donde se presentaron mas contagios
+
+fecha_size = data.groupby('Fecha de diagnóstico').size()
+fecha_size.sort_values(ascending = False)
+
+# 
