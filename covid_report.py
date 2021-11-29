@@ -77,3 +77,7 @@ f_dpto.sort_values(ascending = False).head(10)
 recuperado = data[(data['Recuperado'] == 'Recuperado')]
 r_dpto = recuperado.groupby('Nombre departamento').size()
 r_dpto.sort_values(ascending = False).head(10)
+
+#14. Liste de mayor a menor los 10 municipios con mas casos de contagiados
+Mun_size = data.groupby('Nombre municipio').size()
+Mun_size.sort_values(ascending = False).head(10)
