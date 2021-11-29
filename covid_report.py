@@ -116,3 +116,8 @@ data.groupby(['Nombre departamento', 'Nombre municipio', 'Sexo']).size()
 
 fil = data.groupby(['Nombre departamento', 'Nombre municipio', 'Sexo'])
 print(fil['Edad'].mean())
+
+# 20. Liste de mayor a menor el número de contagiados por país de procedencia
+
+pais_size = data.groupby('Nombre del país').size()
+pais_size.sort_values(ascending = False)
