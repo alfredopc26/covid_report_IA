@@ -85,3 +85,8 @@ Mun_size.sort_values(ascending = False).head(10)
 # 15. Liste de mayor a menor los 10 municipios con mas casos de fallecidos
 f_mun = fallecido.groupby('Nombre municipio').size()
 f_mun.sort_values(ascending = False).head(10)
+
+# 16. Liste de mayor a menor los 10 municipios con mas casos de recuperados
+r_mun = recuperado.groupby('Nombre municipio').size()
+r_mun.sort_values(ascending = False).head(10)
+
