@@ -68,8 +68,12 @@ Tipo_contagio.groupby('Tipo de contagio').size().sort_values(ascending=False)
 Dpto_size = data.groupby('Nombre departamento').size()
 Dpto_size.sort_values(ascending = False).head(10)
 
-# 12. Liste de mayor a menor los 10 departamentos con mas casos de fallecidos+
+# 12. Liste de mayor a menor los 10 departamentos con mas casos de fallecidos
 fallecido = data[(data['Estado'] == 'Fallecido')]
 f_dpto = fallecido.groupby('Nombre departamento').size()
 f_dpto.sort_values(ascending = False).head(10)
 
+#13. Liste de mayor a menor los 10 departamentos con mas casos de recuperados
+recuperado = data[(data['Recuperado'] == 'Recuperado')]
+r_dpto = recuperado.groupby('Nombre departamento').size()
+r_dpto.sort_values(ascending = False).head(10)
