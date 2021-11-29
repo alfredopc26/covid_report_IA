@@ -55,4 +55,5 @@ Tipo_contagio = data[(data['Tipo de contagio'] == 'Importado') |
 (data['Tipo de contagio'] == 'Relacionado')]
 Tipo_contagio.groupby('Tipo de contagio').size().sort_values(ascending=True)
 
-
+# 8. Número de departamentos afectados
+data.groupby('Nombre departamento').size().count()
