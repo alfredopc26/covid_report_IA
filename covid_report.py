@@ -150,3 +150,21 @@ def tasa_dept(array):
     
 
 tasa_dept(data['Nombre departamento'].unique())
+
+# 24. Liste la tasa de mortalidad y recuperación que tiene cada ciudad
+
+def tasa_city(array):
+    
+    for city in array:
+        print(city)
+        print("***----***")
+        city_ = data[(data['Nombre municipio'] == city )]
+        filtered = city_.query(" Recuperado=='Fallecido' or  Recuperado=='Recuperado'")
+        tasa = filtered.Recuperado.value_counts()
+
+        print(f"La tasa de mortalidad es: {tasa.Fallecido/num_casos}")
+        print(f"La tasa de recuperación es: {tasa.Recuperado/num_casos}")
+        print("***----***")
+    
+
+tasa_city(data['Nombre municipio'].unique())
