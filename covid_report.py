@@ -106,3 +106,8 @@ def group_dep(array):
         print("***----***")
         
 group_dep(data['Nombre departamento'].unique())
+
+# 18. Número de Mujeres y hombres contagiados por ciudad por departamento
+
+data.groupby(['Nombre departamento', 'Nombre municipio', 'Sexo']).size()
+
