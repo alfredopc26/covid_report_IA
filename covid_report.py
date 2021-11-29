@@ -128,7 +128,25 @@ fecha_size = data.groupby('Fecha de diagnóstico').size()
 fecha_size.sort_values(ascending = False)
 
 # 22. Diga cual es la tasa de mortalidad y recuperación que tiene toda Colombia
-filtered = data.query(" Recuperado=='Fallecido' ")
-fallecido_ = filtered.Recuperado.value_counts()
+filtered = data.query(" Recuperado=='Fallecido' or  Recuperado=='Recuperado'")
+tasa = filtered.Recuperado.value_counts()
 
-print(f"La tasa de mortalidad es: {fallecido_/num_casos}")
+print(f"La tasa de mortalidad es: {tasa.Fallecido/num_casos}")
+print(f"La tasa de recuperación es: {tasa.Recuperado/num_casos}")
+
+# 23. Liste la tasa de mortalidad y recuperación que tiene cada departamento
+def tasa_dept(array):
+    
+    for dept in array:
+        print(dept)
+        print("***----***")
+        dep = data[(data['Nombre departamento'] == dept )]
+        filtered = dep.query(" Recuperado=='Fallecido' or  Recuperado=='Recuperado'")
+        tasa = filtered.Recuperado.value_counts()
+
+        print(f"La tasa de mortalidad es: {tasa.Fallecido/num_casos}")
+        print(f"La tasa de recuperación es: {tasa.Recuperado/num_casos}")
+        print("***----***")
+    
+
+tasa_dept(data['Nombre departamento'].unique())
