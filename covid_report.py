@@ -64,6 +64,12 @@ print_array(data['Nombre departamento'].unique())
 # 10 Ordene de mayor a menor por tipo de atención
 Tipo_contagio.groupby('Tipo de contagio').size().sort_values(ascending=False)
 
-# Liste de mayor a menor los 10 departamentos con mas casos de contagiados
+# 11 Liste de mayor a menor los 10 departamentos con mas casos de contagiados
 Dpto_size = data.groupby('Nombre departamento').size()
 Dpto_size.sort_values(ascending = False).head(10)
+
+# 12. Liste de mayor a menor los 10 departamentos con mas casos de fallecidos+
+fallecido = data[(data['Estado'] == 'Fallecido')]
+f_dpto = fallecido.groupby('Nombre departamento').size()
+f_dpto.sort_values(ascending = False).head(10)
+
