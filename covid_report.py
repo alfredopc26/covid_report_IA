@@ -31,7 +31,8 @@ print_array(data['Nombre municipio'].unique())
 data.groupby('Ubicación del caso').size()
 data['Ubicación del caso'].replace('CASA','Casa',inplace=True)
 data['Ubicación del caso'].replace('casa','Casa',inplace=True)
-Ub_caso = data[(data['Ubicación del caso'] == 'Casa')].groupby('Ubicación del caso').size()
+Ub_caso = data[(data['Ubicación del caso'] == 'Casa')]
+Ub_caso.groupby('Ubicación del caso').size()
 print(f"El numero de personas en casa es: {Ub_caso.Casa}")
 
 
@@ -90,3 +91,18 @@ f_mun.sort_values(ascending = False).head(10)
 r_mun = recuperado.groupby('Nombre municipio').size()
 r_mun.sort_values(ascending = False).head(10)
 
+# 17. Liste agrupado por departamento y en orden de Mayor a menor las 
+# ciudades con mas casos de contagiados
+
+def group_dep(array):    
+    
+    for dept in array:
+        print(dept)
+        print("***----***")
+        contagio = data[(data['Nombre departamento'] == dept )]
+        a_mun = contagio.groupby('Nombre municipio').size()
+        array_num = a_mun.sort_values(ascending = False)
+        print(array_num)
+        print("***----***")
+        
+group_dep(data['Nombre departamento'].unique())
