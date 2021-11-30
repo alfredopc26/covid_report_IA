@@ -9,6 +9,14 @@ import pandas as pd
 
 url = 'covid_22_noviembre.csv'
 data = pd.read_csv(url)
+# Normalizacion de datos
+data['Nombre departamento'].replace('BOGOTA','CUNDINAMARCA', inplace = True)
+data['Nombre departamento'].replace('CARTAGENA','BOLIVAR', inplace = True)
+data['Nombre departamento'].replace('STA MARTA D.E.','MAGDALENA', inplace = True)
+data['Nombre departamento'].replace('Caldas','CALDAS', inplace = True)
+data['Nombre departamento'].replace('Barranquilla','ATLANTICO', inplace = True)
+data.Estado.replace('leve','Leve',inplace=True)
+data.Estado.replace('LEVE','Leve',inplace=True)
 
 # Número de casos de Contagiados en el País
 num_casos = data.shape[0]
@@ -168,3 +176,11 @@ def tasa_city(array):
     
 
 tasa_city(data['Nombre municipio'].unique())
+
+# 25. Liste por cada ciudad la cantidad de personas por atención
+
+
+# 26. Liste el promedio de edad por sexo por cada ciudad de contagiados
+
+fil = data.groupby(['Nombre municipio', 'Sexo'])
+print(fil['Edad'].mean())
